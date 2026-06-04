@@ -10,83 +10,31 @@ In this phase, you are required to do spatial hot spot analysis. In particular, 
 
 
 ### Hot zone analysis
-This task will needs to perform a range join operation on a rectangle datasets and a point dataset. For each rectangle, the number of points located within the rectangle will be obtained. The hotter rectangle means that it include more points. So this task is to calculate the hotness of all the rectangles. 
+HotZoneAnalysis(): To identify the hot zone, we are provided
+with a list of rectangle(zone) coordinates and a list
+of point coordinates. The input point data set represents
+the pickup point of New York Taxi trip data sets. The
+implementation returns true if a particular input point
+lies inside the input rectangle(zone). The hotness of the
+zone(rectangle) is based on the number of points inside
+the zone.
 
 ### Hot cell analysis
 
 
-1. The input will be a monthly taxi trip dataset from 2009 - 2012. For example, "yellow\_tripdata\_2009-01\_point.csv", "yellow\_tripdata\_2010-02\_point.csv".
-2. Each cell unit size is 0.01 * 0.01 in terms of latitude and longitude degrees.
-3. You should use 1 day as the Time Step size. The first day of a month is step 1. Every month has 31 days.
-4. You only need to consider Pick-up Location.
-## Coding template specification
-
-### Input parameters
-
-1. Output path (Mandatory)
-2. Task name: "hotzoneanalysis" or "hotcellanalysis"
-3. Task parameters: (1) Hot zone (2 parameters): nyc taxi data path, zone path(2) Hot cell (1 parameter): nyc taxi data path
-
-Example
-```
-test/output hotzoneanalysis src/resources/point-hotzone.csv src/resources/zone-hotzone.csv hotcellanalysis src/resources/yellow_tripdata_2009-01_point.csv
-```
-
-Note: 
-
-1. The number/order of tasks do not matter.
-2. But, the first 7 of our final test cases on Vocareum will be hot zone analysis, the last 8 will be hot cell analysis.
-
-
-
-
-### Input data format
-The main function/entrace is "cse512.Entrance" scala file.
-
-1. Point data: the input point dataset is the pickup point of New York Taxi trip datasets. The data format of this phase is the original format of NYC taxi trip which is different from Phase 2. But the coding template already parsed it for you. Find the data from our S3 bucket: [Data Systems Lab S3 Bucket](https://datasyslab.s3.amazonaws.com/index.html?prefix=nyctaxitrips/)
-
-2. Zone data (only for hot zone analysis): at "src/resources/zone-hotzone" of the template
-
-#### Hot zone analysis
-The input point data can be any small subset of NYC taxi dataset.
-
-#### Hot cell analysis
-The input point data is a monthly NYC taxi trip dataset (2009-2012) like "yellow\_tripdata\_2009-01\_point.csv"
-
-### Output data format
-
-#### Hot zone analysis
-All zones with their count, sorted by "rectangle" string in an ascending order. 
-
-```
-"-73.795658,40.743334,-73.753772,40.779114",1
-"-73.797297,40.738291,-73.775740,40.770411",1
-"-73.832707,40.620010,-73.746541,40.665414",20
-```
-
-
-#### Hot cell analysis
-The coordinates of top 50 hotest cells sorted by their G score in a descending order. Note, DO NOT OUTPUT G score.
-
-```
--7399,4075,15
--7399,4075,29
--7399,4075,22
-```
-
-### Hot zone analysis
-
-In the code template,
-
-1. You need to change "**HotzoneAnalysis.scala** and **HotzoneUtils.scala**".
-2. The coding template has loaded the data and wrote the first step, range join query, for you. Please finish the rest of the task.
-3. The output DataFrame should be sorted by you according to "rectangle" string.
-
-### Hot cell analysis
-In the code template,
-
-1. You need to change "**HotcellAnalysis.scala** and **HotcellUtils.scala**".
-2. The coding template has loaded the data and decided the cell coordinate, x, y, z and their min and max. Please finish the rest of the task.
-3. The output DataFrame should be sorted by you according to G-score. The coding template will take the first 50 to output. DO NOT OUTPUT G-score.
+We are given a list of pickup (x, y, z)
+coordinates corresponding to latitude, longitude, and date
+of pickup. By applying spatial statistics Getis-Ord, it is
+required to determine the hot cells from the given input.
+To apply Getis-ord, we first need the number of neighbors
+of a cell. This is calculated based on the possible locations
+of a cell, it can either be an edge, corner, face, or center
+cell. The maximum neighbors would be 18 for the edge
+cell, 8 for the corner, 27 for the center, and 12 for the
+face cells. The next step would be to filter the given
+data based on the bounded values (minX, maxX), (minY,
+maxY), and (minZ, maxZ). Then count the number of
+pickups at each pickup location(x, y, z) and store it in the
+pickup table.
 
 
