@@ -30,9 +30,6 @@ To reduce the computation power needï¼Œwe made the following changes:
 2. Each cell unit size is 0.01 * 0.01 in terms of latitude and longitude degrees.
 3. You should use 1 day as the Time Step size. The first day of a month is step 1. Every month has 31 days.
 4. You only need to consider Pick-up Location.
-5. We don't use Jaccard similarity to check your answer.
-However, you don't need to worry about how to decide the cell coordinates because the code template generated cell coordinates. You just need to write the rest of the task.
-
 ## Coding template specification
 
 ### Input parameters
@@ -87,12 +84,6 @@ The coordinates of top 50 hotest cells sorted by their G score in a descending o
 -7399,4075,29
 -7399,4075,22
 ```
-### Example answers
-An example input and answer are put in "testcase" folder of the coding template
-
-
-## Where you need to change
-DO NOT DELETE any existing code in the coding template unless you see this "YOU NEED TO CHANGE THIS PART"
 
 ### Hot zone analysis
 
