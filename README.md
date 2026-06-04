@@ -110,23 +110,3 @@ In the code template,
 3. The output DataFrame should be sorted by you according to G-score. The coding template will take the first 50 to output. DO NOT OUTPUT G-score.
 
 
-## Tips (Optional)
-This section is same with that in the Project SparkSQl Instructions.
-### How to debug your code in IDE
-
-If you are using the Scala template
-
-1. Use IntelliJ Idea with Scala plug-in or any other Scala IDE.
-2. Replace the logic of User Defined Functions ST\_Contains and ST\_Within in SpatialQuery.scala.
-3. Append ```.master("local[*]")``` after ```.config("spark.some.config.option", "some-value")``` to tell IDE the master IP is localhost.
-3. In some cases, you may need to go to "build.sbt" file and change ```% "provided"``` to ```% "compile"``` in order to debug your code in IDE
-4. Run your code in IDE
-5. **You must revert Step 3 and 4 above and recompile your code before use spark-submit!!!**
-
-### How to submit your code to Spark
-If you are using the Scala template
-
-1. Go to project root folder
-2. Run ```sbt clean assembly```. You may need to install sbt in order to run this command.
-3. Find the packaged jar in "./target/scala-2.11/CSE512-Project-Hotspot-Analysis-Template-assembly-0.1.0.jar"
-4. Submit the jar to Spark using Spark command "./bin/spark-submit". A pseudo code example: ```./bin/spark-submit ~/GitHub/CSE512-Project-Hotspot-Analysis-Template/target/scala-2.11/CSE512-Project-Hotspot-Analysis-Template-assembly-0.1.0.jar test/output hotzoneanalysis src/resources/point-hotzone.csv src/resources/zone-hotzone.csv hotcellanalysis src/resources/yellow_tripdata_2009-01_point.csv```
