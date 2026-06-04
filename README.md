@@ -1,8 +1,8 @@
-# CSE511-Project-Hotspot-Analysis-Template
+# Project-Hotspot-Analysis
 
 ## Requirement
 
-In this phase, you are required to do spatial hot spot analysis. In particular, you need to complete two different hot spot analysis tasks 
+In this phase, we are required to do spatial hot spot analysis. In particular, need to complete two different hot spot analysis tasks 
 
 
 ### Hot zone analysis
