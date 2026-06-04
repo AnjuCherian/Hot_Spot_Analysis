@@ -14,17 +14,6 @@ This task will needs to perform a range join operation on a rectangle datasets a
 
 ### Hot cell analysis
 
-#### Description
-This task will focus on applying spatial statistics to spatio-temporal big data in order to identify statistically significant spatial hot spots using Apache Spark. The topic of this task is from ACM SIGSPATIAL GISCUP 2016.
-
-The Problem Definition page is here: [http://sigspatial2016.sigspatial.org/giscup2016/problem](http://sigspatial2016.sigspatial.org/giscup2016/problem) 
-
-The Submit Format page is here: [http://sigspatial2016.sigspatial.org/giscup2016/submit](http://sigspatial2016.sigspatial.org/giscup2016/submit)
-
-#### Special requirement (different from GIS CUP)
-As stated in the Problem Definition page, in this task, you are asked to implement a Spark program to calculate the Getis-Ord statistic of NYC Taxi Trip datasets. We call it "**Hot cell analysis**"
-
-To reduce the computation power needï¼Œwe made the following changes:
 
 1. The input will be a monthly taxi trip dataset from 2009 - 2012. For example, "yellow\_tripdata\_2009-01\_point.csv", "yellow\_tripdata\_2010-02\_point.csv".
 2. Each cell unit size is 0.01 * 0.01 in terms of latitude and longitude degrees.
